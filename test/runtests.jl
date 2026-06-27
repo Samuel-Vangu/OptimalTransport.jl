@@ -10,12 +10,10 @@ const GROUP = get(ENV, "GROUP", "All")
     if GROUP == "All" || GROUP == "OptimalTransport"
         @safetestset "Utilities" begin
             include("utils.jl")
-        end
-
-	@safetestset "Gaussian" begin
-    	    include("gaussian_hd.jl")
+	end
+        @safetestset "Gaussian" begin
+            include("gaussian_hd.jl")
 	end	
-
         @testset "Entropically regularized OT" begin
             @safetestset "Sinkhorn Gibbs" begin
                 include(joinpath("entropic", "sinkhorn_gibbs.jl"))
